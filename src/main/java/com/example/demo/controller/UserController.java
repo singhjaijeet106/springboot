@@ -12,5 +12,10 @@ public class UserController {
 	public String welcome() {
 		return "welcome to the new api endpoint";
 	}
+	
+	@GetMapping(path = "/exit")	
+	public String exit() {
+		return "please visit us again soon";
+	}
 
 }
