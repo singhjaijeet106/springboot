@@ -1,18 +1,8 @@
 pipeline {
     agent any
     
-    environment {
-        name = 'jaijeet'
-    }
-    
-    parameters{
-        string(name:'build',defaultValue:'springboot',description:"share the build number for this application")
-        booleanParam(name:'frontEndRequired',defaultValue:true,description:"Deploy with frontend as well")
-        choice(name:'environment',choices:['test','stage','production'],description:"Deploy on which Environment")
-    }
-
     stages {
-        stage('Run A command') {
+        stage('Build Maven') {
             steps {
                 sh '''
                 ls
@@ -39,6 +29,8 @@ pipeline {
                 sh 'echo "${build}"'
             }
         }
+        stage('Creating docker build'){
+        
         stage('Continue ?') {
             input {
                 message "Should we continue?"
